@@ -1,5 +1,7 @@
 project('gale', 'c', version : '1.1happy')
 
+sysconfdir = get_option('sysconfdir')
+
 conf_data = configuration_data()
 c = meson.get_compiler('c')
 
@@ -34,3 +36,6 @@ subdir('liboop')
 subdir('libgale')
 subdir('server')
 subdir('gdomain')
+subdir('gsend')
+subdir('gsub')
+subdir('kutils')
