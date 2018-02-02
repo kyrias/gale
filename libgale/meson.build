@@ -17,6 +17,7 @@ libgale_sources = ['core_init.c', 'core_link.c', 'core_signals.c',
                    'wcwidth.c']
 libgale_lib = shared_library('gale',
                              libgale_sources,
+                             version: '14.0.0',
                              include_directories: includes,
                              c_args : ['-DGALE_SYS_DIR="@0@"'.format(gale_sys_dir)],
                              dependencies : [readline, liboop, liboop_adns, ncursesw, libcrypto, bdw_gc],
