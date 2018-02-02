@@ -19,8 +19,8 @@ libgale_lib = shared_library('gale',
                              libgale_sources,
                              version: '14.0.0',
                              include_directories: includes,
-                             c_args : ['-DGALE_SYS_DIR="@0@"'.format(gale_sys_dir)],
-                             dependencies : [readline, liboop, liboop_adns, ncursesw, libcrypto, bdw_gc],
+                             c_args: ['-DGALE_SYS_DIR="@0@"'.format(gale_sys_dir)],
+                             dependencies: [readline, liboop, liboop_adns, ncursesw, libcrypto, bdw_gc],
                              install: true)
 libgale = declare_dependency(link_with: libgale_lib,
                              include_directories: includes)
