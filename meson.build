@@ -1,6 +1,8 @@
 project('gale', 'c', version : '1.1happy')
 
-sysconfdir = get_option('sysconfdir')
+prefix = get_option('prefix')
+sysconfdir = join_paths([prefix, get_option('sysconfdir')])
+datadir = join_paths([prefix, get_option('datadir')])
 
 conf_data = configuration_data()
 c = meson.get_compiler('c')
@@ -39,3 +41,5 @@ subdir('gdomain')
 subdir('gsend')
 subdir('gsub')
 subdir('kutils')
+
+install_data('COPYING', install_dir: join_paths([datadir, 'gale']))

@@ -1,4 +1,3 @@
-gale_sys_dir = join_paths([get_option('sysconfdir'), 'gale'])
 pkg = import('pkgconfig')
 
 bdw_gc = dependency('bdw-gc')
@@ -20,7 +19,7 @@ libgale_lib = shared_library('gale',
                              libgale_sources,
                              version: '14.0.0',
                              include_directories: includes,
-                             c_args: ['-DGALE_SYS_DIR="@0@"'.format(gale_sys_dir)],
+                             c_args: ['-DGALE_SYS_DIR="@0@"'.format(join_paths([sysconfdir, 'gale']))],
                              dependencies: [readline, liboop, liboop_adns, ncursesw, libcrypto, bdw_gc],
                              install: true)
 libgale = declare_dependency(link_with: libgale_lib,
