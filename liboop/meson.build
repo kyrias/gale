@@ -3,6 +3,7 @@ adns = c.find_library('adns')
 
 
 liboop_includes = include_directories('.')
+install_headers('oop.h', 'oop-adns.h')
 
 
 liboop_sources = ['sys.c', 'select.c', 'signal.c', 'alloc.c',
