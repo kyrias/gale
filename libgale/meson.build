@@ -1,4 +1,5 @@
 gale_sys_dir = join_paths([get_option('sysconfdir'), 'gale'])
+pkg = import('pkgconfig')
 
 bdw_gc = dependency('bdw-gc')
 libcrypto = dependency('libcrypto')
@@ -24,3 +25,8 @@ libgale_lib = shared_library('gale',
                              install: true)
 libgale = declare_dependency(link_with: libgale_lib,
                              include_directories: includes)
+pkg.generate(name: 'libgale',
+             filebase: 'gale',
+             description: 'Gale instant messaging system library',
+             version: meson.project_version(),
+             libraries: libgale_lib)
