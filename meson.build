@@ -2,6 +2,7 @@ project('gale', 'c', version : '1.1happy')
 
 prefix = get_option('prefix')
 sysconfdir = join_paths([prefix, get_option('sysconfdir')])
+bindir = join_paths([prefix, get_option('bindir')])
 datadir = join_paths([prefix, get_option('datadir')])
 
 conf_data = configuration_data()
@@ -43,3 +44,12 @@ subdir('gsub')
 subdir('kutils')
 
 install_data('COPYING', install_dir: join_paths([datadir, 'gale']))
+
+script_conf = configuration_data()
+script_conf.set('sysconfdir', sysconfdir)
+script_conf.set('bindir', bindir)
+script_conf.set('VERSION', meson.project_version())
+gale_install = configure_file(input: 'gale-install.in', output: 'gale-install', configuration: script_conf)
+install_data([gale_install],
+             install_dir: bindir,
+             install_mode: 'rwxr-xr-x')
