@@ -53,3 +53,6 @@ gale_install = configure_file(input: 'gale-install.in', output: 'gale-install', 
 install_data([gale_install],
              install_dir: bindir,
              install_mode: 'rwxr-xr-x')
+
+# Create the /etc/gale/auth directory tree
+meson.add_install_script('create-gale-auth-tree', join_paths([sysconfdir, 'gale']))

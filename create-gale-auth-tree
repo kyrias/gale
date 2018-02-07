@@ -1,0 +1,7 @@
+#!/bin/sh
+
+authdir="$DESTDIR${1:-/etc/gale}/auth"
+
+install -dm1777 "$authdir"/local
+install -dm777 "$authdir"/cache
+install -d "$authdir"/private "$authdir"/trusted
